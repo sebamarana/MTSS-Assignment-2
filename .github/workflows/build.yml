@@ -1,10 +1,6 @@
-name: Build
+name: Java CI with Maven
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
 
 jobs:
   build:
@@ -13,65 +9,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Set up JDK 11
+      - name: Set up JDK 1.8
         uses: actions/setup-java@v3
         with:
-          java-version: '11'
           distribution: 'temurin'
-          cache: maven
-
-      - name: Cache local Maven repository
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
+          java-version: 8.0.332+9
+          cache: 'maven'
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn -B clean package --file roman-number/pom.xml jacoco:report
 
-      - name: Generate site
-        run: mvn jacoco:prepare-agent install jacoco:report
-
-      - name: Generate JaCoCo Badge
-        id: jacoco
-        uses: cicirello/jacoco-badge-generator@v2.6.1
-        with:
-          generate-branches-badge: true
-          jacoco-csv-file: target/site/jacoco/jacoco.csv
-          badges-directory: .github/badges
-
-      - name: Log coverage percentage
-        run: |
-          echo "coverage = ${{ steps.jacoco.outputs.coverage}}"
-          echo "branches = ${{ steps.jacoco.outputs.branches}}"
-      - name: Add badges
-        run: git add .github/badges
-
-      - name: Commit files
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m "Added coverage badges" -a || true
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
-
-      - name: Upload JaCoCo coverage report
-        uses: actions/upload-artifact@v3
-        with:
-          name: jacoco-report
-          path: target/site/jacoco/
-
-      - name: Codecov
-        uses: codecov/codecov-action@v3.1.0
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: target/site/jacoco/jacoco.xml
-          name: codecov
+      - name: Coveralls
+        run: mvn -B --file roman-number/pom.xml coveralls:report --define repoToken=${{ secrets.COVERALLS_REPO_TOKEN }}
