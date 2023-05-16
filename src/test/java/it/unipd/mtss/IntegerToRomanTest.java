@@ -9,6 +9,16 @@ import static org.junit.Assert.*;
 public class IntegerToRomanTest {
 
     @Test
+    public void testConvertOnefromClass() {
+        //Arrange
+        int one = 1;
+        IntegerToRoman intToroman = new IntegerToRoman();
+        //Act
+        String result = intToroman.convert(one);
+        //Assert
+        assertEquals("I", result);
+    }
+    @Test
     public void testConvertOne() {
         //Arrange
         int one = 1;
