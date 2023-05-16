@@ -16,7 +16,7 @@ jobs:
           java-version: 8.0.332+9
           cache: 'maven'
       - name: Build with Maven
-        run: mvn -B clean package --file roman-number/pom.xml jacoco:report
+        run: mvn -B clean package --file pom.xml jacoco:report
 
       - name: Coveralls
         run: mvn -B --file roman-number/pom.xml coveralls:report --define repoToken=${{ secrets.COVERALLS_REPO_TOKEN }}
