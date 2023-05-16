@@ -59,6 +59,16 @@ public class IntegerToRomanTest {
     }
 
     @Test
+    public void testConvert894() {
+        //Arrange
+        int num = 894;
+        //Act
+        String result = IntegerToRoman.convert(num);
+        //Assert
+        assertEquals("DCCCXCIV", result);
+    }
+
+    @Test
     public void testConvert999() {
         //Arrange
         int num = 999;
