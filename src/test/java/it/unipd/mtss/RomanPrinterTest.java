@@ -19,7 +19,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintFour() {
+    public void testPrint4() {
         //Arrange
         String roman = "IV";
         //Act
@@ -29,7 +29,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintFive() {
+    public void testPrint5() {
         //Arrange
         String roman = "V";
         //Act
@@ -39,7 +39,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintNine() {
+    public void testPrint9() {
         //Arrange
         String roman = "IX";
         //Act
@@ -49,7 +49,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintTen() {
+    public void testPrint10() {
         //Arrange
         String roman = "X";
         //Act
@@ -59,7 +59,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintForty() {
+    public void testPrint40() {
         //Arrange
         String roman = "XL";
         //Act
@@ -69,7 +69,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintFifty() {
+    public void testPrint50() {
         //Arrange
         String roman = "L";
         //Act
@@ -79,7 +79,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintNinety() {
+    public void testPrint90() {
         //Arrange
         String roman = "XC";
         //Act
@@ -89,7 +89,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintOneHundred() {
+    public void testPrint100() {
         //Arrange
         String roman = "C";
         //Act
@@ -99,7 +99,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintFourHundred() {
+    public void testPrint400() {
         //Arrange
         String roman = "CD";
         //Act
@@ -109,7 +109,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintFiveHundred() {
+    public void testPrint500() {
         //Arrange
         String roman = "D";
         //Act
@@ -119,7 +119,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintNineHundred() {
+    public void testPrint900() {
         //Arrange
         String roman = "CM";
         //Act
@@ -129,7 +129,7 @@ public class RomanPrinterTest {
     }
 
     @Test
-    public void testPrintOneThousand() {
+    public void testPrint1000() {
         //Arrange
         String roman = "M";
         //Act
