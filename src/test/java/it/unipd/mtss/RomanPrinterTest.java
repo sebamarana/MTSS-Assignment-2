@@ -1,12 +1,29 @@
 package it.unipd.mtss;
 
 import org.junit.Test;
+import org.junit.Before;
 
 import java.security.InvalidParameterException;
+
+import org.mockito.Mockito;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.mockito.Mockito.when;
 
 import static org.junit.Assert.*;
 
 public class RomanPrinterTest {
+
+    @Test
+    public void testPrintOnefromClass() {
+        //Arrange
+        int number = 1;
+        RomanPrinter rom = new RomanPrinter();
+        //Act
+        String result = rom.print(number);
+        //Assert
+        assertEquals("  _____  \n |_   _| \n   | |   \n   | |   \n  _| |_  \n |_____| \n", result);
+    }
 
     @Test
     public void testPrintOne() {
